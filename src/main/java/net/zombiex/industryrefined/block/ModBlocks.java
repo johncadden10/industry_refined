@@ -1,15 +1,16 @@
 package net.zombiex.industryrefined.block;
 
+import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.zombiex.industryrefined.IndustryRefined;
+import net.zombiex.industryrefined.fluid.ModFluids;
 import net.zombiex.industryrefined.item.ModItems;
 
 import java.util.function.Supplier;
@@ -20,11 +21,20 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> STEEL_BLOCK = registerBlock("steel_block",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK)));
+                    .strength(5f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.NETHERITE_BLOCK)));
 
     public static final RegistryObject<Block> DRY_STEEL_ALLOY_BLOCK = registerBlock("dry_steel_alloy_block",
-            () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(2f).requiresCorrectToolForDrops().sound(SoundType.SAND)));
+            () -> new ColoredFallingBlock(
+                    new ColorRGBA(-8356741),
+                    BlockBehaviour.Properties.of()
+                    .strength(0.5f)
+                    .sound(SoundType.SAND)));
+
+    public static final RegistryObject<LiquidBlock> CRUDE_OIL_BLOCK = BLOCKS.register("crude_oil_block",
+            () -> new LiquidBlock(ModFluids.SOURCE_CRUDE_OIL,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.WATER)));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

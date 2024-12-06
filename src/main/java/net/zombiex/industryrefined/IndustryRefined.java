@@ -2,6 +2,8 @@ package net.zombiex.industryrefined;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
@@ -27,6 +29,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.zombiex.industryrefined.block.ModBlocks;
+import net.zombiex.industryrefined.fluid.ModFluidTypes;
+import net.zombiex.industryrefined.fluid.ModFluids;
+import net.zombiex.industryrefined.item.ModCreativeModeTabs;
 import net.zombiex.industryrefined.item.ModItems;
 import org.slf4j.Logger;
 
@@ -45,8 +50,13 @@ public class IndustryRefined {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
+        ModCreativeModeTabs.register(modEventBus);
+
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
+        ModFluids.register(modEventBus);
+        ModFluidTypes.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -63,6 +73,8 @@ public class IndustryRefined {
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.DENSE_PLASTIC);
             event.accept(ModItems.THIN_PLASTIC);
+            event.accept(ModItems.DRY_STEEL_ALLOY);
+            event.accept(ModItems.STEEL_INGOT);
         }
 
         if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
@@ -82,6 +94,8 @@ public class IndustryRefined {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_CRUDE_OIL.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_CRUDE_OIL.get(), RenderType.translucent());
 
         }
     }
