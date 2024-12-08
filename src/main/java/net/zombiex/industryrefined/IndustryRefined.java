@@ -2,6 +2,7 @@ package net.zombiex.industryrefined;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.Registries;
@@ -29,10 +30,13 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.zombiex.industryrefined.block.ModBlocks;
+import net.zombiex.industryrefined.block.entity.ModBlockEntities;
 import net.zombiex.industryrefined.fluid.ModFluidTypes;
 import net.zombiex.industryrefined.fluid.ModFluids;
 import net.zombiex.industryrefined.item.ModCreativeModeTabs;
 import net.zombiex.industryrefined.item.ModItems;
+import net.zombiex.industryrefined.screen.ModMenuTypes;
+import net.zombiex.industryrefined.screen.RefineryScreen;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -54,6 +58,9 @@ public class IndustryRefined {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
 
         ModFluids.register(modEventBus);
         ModFluidTypes.register(modEventBus);
@@ -78,6 +85,7 @@ public class IndustryRefined {
         }
 
         if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(ModBlocks.PLASTIC_BLOCK);
             event.accept(ModBlocks.STEEL_BLOCK);
             event.accept(ModBlocks.DRY_STEEL_ALLOY_BLOCK);
         }
@@ -96,6 +104,8 @@ public class IndustryRefined {
         public static void onClientSetup(FMLClientSetupEvent event) {
             ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_CRUDE_OIL.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_CRUDE_OIL.get(), RenderType.translucent());
+
+            MenuScreens.register(ModMenuTypes.REFINERY_MENU.get(), RefineryScreen::new);
 
         }
     }

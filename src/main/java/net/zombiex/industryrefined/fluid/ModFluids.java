@@ -23,7 +23,7 @@ public class ModFluids {
 
     public static final ForgeFlowingFluid.Properties CRUDE_OIL_FLUID_PROPERTIES = new ForgeFlowingFluid.Properties(
             ModFluidTypes.CRUDE_OIL_FLUID_TYPE, SOURCE_CRUDE_OIL, FLOWING_CRUDE_OIL)
-            .slopeFindDistance(2).levelDecreasePerBlock(2).block(ModBlocks.CRUDE_OIL_BLOCK).bucket(ModItems.CRUDE_OIL_BUCKET);
+            .slopeFindDistance(2).levelDecreasePerBlock(1).block(ModBlocks.CRUDE_OIL_BLOCK).bucket(ModItems.CRUDE_OIL_BUCKET);
 
 
     public static void register(IEventBus eventBus) {

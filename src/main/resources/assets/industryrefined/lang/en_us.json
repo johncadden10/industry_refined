@@ -1,12 +1,16 @@
 {
+  "item.industryrefined.crude_oil_bucket": "Crude Oil Bucket",
   "item.industryrefined.dense_plastic": "Dense Plastic",
   "item.industryrefined.thin_plastic": "Thin Plastic",
   "item.industryrefined.dry_steel_alloy": "Dry Steel Alloy",
   "item.industryrefined.steel_ingot": "Steel Ingot",
-  "item.industryrefined.crude_oil_bucket": "Bucket of Crude Oil",
 
-  "block.industryrefined.steel_block": "Block of Steel",
+
+  "block.industryrefined.refinery": "Refinery",
+  "block.industryrefined.plastic_block": "Plastic Block",
   "block.industryrefined.dry_steel_alloy_block": "Block of Dry Steel Alloy",
+  "block.industryrefined.steel_block": "Block of Steel",
+
 
   "creativetab.industryrefined.industry_refined_items": "Industry Refined",
   "creativetab.industryrefined.industry_refined_test": "Industry Refined TEST"

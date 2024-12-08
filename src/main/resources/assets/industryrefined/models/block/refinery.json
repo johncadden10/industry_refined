@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "industryrefined:block/refinery_front",
+    "side": "industryrefined:block/refinery_side",
+    "top": "industryrefined:block/refinery_top",
+    "bottom": "industryrefined:block/refinery_bottom"
+  }
+}

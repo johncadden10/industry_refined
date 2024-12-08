@@ -19,10 +19,17 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, IndustryRefined.MOD_ID);
 
+    public static final RegistryObject<Block> PLASTIC_BLOCK = registerBlock("plastic_block",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(1.5f)
+                    .explosionResistance(0.8f)
+                    .sound(SoundType.CANDLE)));
+
     public static final RegistryObject<Block> STEEL_BLOCK = registerBlock("steel_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(5f)
                     .requiresCorrectToolForDrops()
+                    .explosionResistance(1200f)
                     .sound(SoundType.NETHERITE_BLOCK)));
 
     public static final RegistryObject<Block> DRY_STEEL_ALLOY_BLOCK = registerBlock("dry_steel_alloy_block",
@@ -31,6 +38,15 @@ public class ModBlocks {
                     BlockBehaviour.Properties.of()
                     .strength(0.5f)
                     .sound(SoundType.SAND)));
+
+
+    public static final RegistryObject<Block> REFINERY = registerBlock("refinery",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(3.5f)
+                    .requiresCorrectToolForDrops()
+                    .explosionResistance(3.5f)
+                    .sound(SoundType.STONE)));
+
 
     public static final RegistryObject<LiquidBlock> CRUDE_OIL_BLOCK = BLOCKS.register("crude_oil_block",
             () -> new LiquidBlock(ModFluids.SOURCE_CRUDE_OIL,

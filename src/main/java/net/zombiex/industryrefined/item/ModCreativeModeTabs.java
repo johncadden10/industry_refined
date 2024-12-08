@@ -30,6 +30,8 @@ public class ModCreativeModeTabs {
                     .withTabsBefore(INDUSTRY_REFINED_TAB.getId())
                     .title(Component.translatable("creativetab.industryrefined.industry_refined_test"))
                     .displayItems((ItemDisplayParameters, output) -> {
+                        output.accept(ModBlocks.REFINERY.get());
+                        output.accept(ModBlocks.PLASTIC_BLOCK.get());
                         output.accept(ModBlocks.DRY_STEEL_ALLOY_BLOCK.get());
                         output.accept(ModBlocks.STEEL_BLOCK.get());
                     }).build());
